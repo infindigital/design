@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The price of the giant flags — The Clarion</title>
+  <meta name="description" content="We combed through three consecutive tenders to reveal why long-term estimates for the city's giant flags have soared even as unit costs were claimed to fall." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="reading-progress" id="readingProgress"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="utility-bar">
+      <div class="wrap utility-inner">
+        <div class="utility-left">
+          <span class="util-date" id="todayDate">Loading…</span>
+          <span class="divider" aria-hidden="true"></span>
+          <div class="trending">
+            <span class="trending-label">Trending</span>
+            <a href="category.html">#FightToBreathe</a>
+            <span class="dot">•</span>
+            <a href="category.html">Podcasts</a>
+            <span class="dot">•</span>
+            <a href="category.html">Elections</a>
+          </div>
+        </div>
+        <div class="utility-right">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <button class="active" data-lang="EN">EN</button>
+            <button data-lang="HI">HI</button>
+          </div>
+          <button class="icon-btn" id="searchToggle" aria-label="Search"><span class="material-symbols-outlined">search</span></button>
+          <button class="icon-btn theme-btn" id="themeToggle" aria-label="Toggle dark mode"><span class="material-symbols-outlined">dark_mode</span></button>
+          <a href="index.html#support" class="btn btn-ghost">Support Us</a>
+          <a href="index.html#subscribe" class="btn btn-solid">Subscribe</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap masthead">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">TC</span>
+        <span class="brand-text">
+          <span class="brand-name">The Clarion</span>
+          <span class="brand-tag">Pay to keep news free</span>
+        </span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="category.html" class="active">Investigations</a>
+        <a href="category.html">Ground Report</a>
+        <a href="category.html">Subscriber Only</a>
+        <a href="category.html">Podcasts</a>
+        <a href="category.html">Video</a>
+        <a href="category.html">Opinion</a>
+      </nav>
+      <button class="icon-btn menu-btn" id="menuToggle" aria-label="Menu" aria-expanded="false"><span class="material-symbols-outlined">menu</span></button>
+    </div>
+    <div class="search-drawer" id="searchDrawer" hidden>
+      <div class="wrap">
+        <form class="search-form" onsubmit="return false;">
+          <span class="material-symbols-outlined">search</span>
+          <input type="search" placeholder="Search investigations, reporters, topics…" aria-label="Search" />
+          <button type="submit" class="btn btn-solid">Go</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">›</span>
+      <a href="category.html">Investigations</a><span class="sep">›</span>
+      <span class="current">Public Purse</span>
+    </nav>
+
+    <article class="article">
+      <header class="article-head">
+        <span class="article-kicker"><span class="material-symbols-outlined">lan</span> Public Purse · Tenders &amp; Contracts</span>
+        <h1 class="article-title">The price of the giant flags: replaced every month, a bigger bill with each new tender</h1>
+        <p class="article-dek">Five hundred monumental flag installations were estimated to cost around ₹200 crore to install and maintain. We combed through three consecutive tenders to reveal why long-term estimates have soared — even as unit costs were claimed to fall.</p>
+
+        <div class="article-meta">
+          <div class="byline">
+            <span class="avatar">SG</span>
+            <div>
+              <p class="author">Samarth Grover</p>
+              <p class="meta">Staff Reporter · Published Oct 26, 2024 · 8 min read</p>
+            </div>
+          </div>
+          <div class="share">
+            <span class="share-label">Share</span>
+            <a class="share-btn" href="#" aria-label="Share on X" data-share="x"><span class="material-symbols-outlined">close</span></a>
+            <a class="share-btn" href="#" aria-label="Share on Facebook" data-share="fb"><span class="material-symbols-outlined">thumb_up</span></a>
+            <a class="share-btn" href="#" aria-label="Share on WhatsApp" data-share="wa"><span class="material-symbols-outlined">chat</span></a>
+            <button class="share-btn" id="copyLink" aria-label="Copy link"><span class="material-symbols-outlined">link</span></button>
+          </div>
+        </div>
+      </header>
+
+      <div class="article-hero" style="--img: linear-gradient(135deg,#8a2d0e,#c9641f 55%,#e9b27a)" role="img" aria-label="A giant national flag on a concrete dais"></div>
+      <p class="article-figcap">A monumental flag installation on a central dais. Photo illustration · The Clarion</p>
+
+      <div class="prose">
+        <p>When the civic body first announced a plan to raise 500 monumental flags across the city, the gesture was framed as a matter of pride. Two years and three tenders later, the accounting tells a more complicated story — one of fabric that frays within weeks, estimates that balloon between bids, and a maintenance bill that quietly outgrows the cost of the flags themselves.</p>
+
+        <p>Documents reviewed by The Clarion show that the long-term budget projection rose from an initial ₹140 crore to just under ₹200 crore across successive rounds, even as the stated per-unit replacement cost was revised <em>downward</em>. The apparent contradiction, officials concede, comes down to one line item: how often each flag must be swapped.</p>
+
+        <h2>Why the fabric does not last</h2>
+        <p>In areas where the air quality index routinely crosses 400, the polyester weave used for the installations degrades far faster than the original specification assumed. Internal notes attached to the second tender recommend a mandatory 30-day replacement cycle in the worst-affected zones — a schedule that multiplies annual fabric spend by a factor of three.</p>
+
+        <blockquote>"The flag is not the expense. The expense is the calendar on which the flag must die and be reborn."</blockquote>
+
+        <p>That calendar, buried in an annexure, is where the money goes. A single installation in a high-pollution corridor can consume a dozen replacement panels a year, each requiring a crane, a crew and a traffic diversion.</p>
+
+        <h3>The 42% gap</h3>
+        <p>More striking is the spread between bids. Across the maintenance consortium proposals we examined, quoted rates deviated from the municipal baseline estimate by as much as 42% — a range wide enough that officials privately describe the figures as "difficult to compare like for like."</p>
+
+        <div class="keybox">
+          <h4>What our review found</h4>
+          <ul>
+            <li><span class="material-symbols-outlined">check_circle</span> Fabric degradation in severe AQI conditions triggers mandatory 30-day swaps in the worst zones.</li>
+            <li><span class="material-symbols-outlined">check_circle</span> Maintenance bids showed up to 42% deviation from the baseline municipal estimate.</li>
+            <li><span class="material-symbols-outlined">check_circle</span> Long-term projections rose ~₹60 crore even as unit replacement costs were revised down.</li>
+          </ul>
+        </div>
+
+        <p>The second tender introduced a clause allowing the contractor to invoice for "weather-driven emergency replacements" outside the fixed schedule — an open-ended category that accounts for a growing share of recent claims.</p>
+
+        <figure>
+          <div class="fig-img" style="--img: linear-gradient(135deg,#2a3344,#53647e)"></div>
+          <figcaption>Replacement panels are stored at a municipal depot ahead of the monthly swap cycle. Photo illustration · The Clarion</figcaption>
+        </figure>
+
+        <p class="pull-quote">"Unit costs fell. The bill went up. Both statements are true — and that is the whole problem."
+          <cite>— A procurement official, speaking on condition of anonymity</cite>
+        </p>
+
+        <h2>What happens next</h2>
+        <p>A third tender, now in its evaluation stage, proposes shifting to a treated weave the manufacturer claims will double panel life. If the claim holds, it could flatten the replacement curve that has driven costs. If it does not, the city will have locked in a higher baseline for a problem it has yet to solve.</p>
+
+        <p>The civic body did not respond to a detailed questionnaire before publication. We will update this report if a response is received.</p>
+
+        <div class="inline-cta">
+          <h3>This reporting took three weeks and zero advertisers.</h3>
+          <p>The Clarion is funded entirely by readers. Keep investigations like this one free to read.</p>
+          <a href="index.html#subscribe" class="btn btn-dark">Subscribe from ₹300/mo</a>
+        </div>
+
+        <ul class="tags">
+          <a class="tag" href="category.html">#PublicPurse</a>
+          <a class="tag" href="category.html">#Tenders</a>
+          <a class="tag" href="category.html">#CivicBody</a>
+          <a class="tag" href="category.html">#AirQuality</a>
+          <a class="tag" href="category.html">#Procurement</a>
+        </ul>
+
+        <div class="author-card">
+          <span class="avatar">SG</span>
+          <div>
+            <h4>Samarth Grover</h4>
+            <p class="role">Staff Reporter · Public Purse</p>
+            <p>Samarth covers government spending, tenders and contracts. He has spent the last year tracking how civic budgets are drafted, revised and defended.</p>
+            <a href="category.html" class="btn btn-ghost follow">View all stories</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related -->
+    <section class="related">
+      <div class="section-head">
+        <div class="section-title"><span class="section-bar"></span><h2>More from Investigations</h2></div>
+        <a href="category.html" class="view-all">View all <span class="material-symbols-outlined">arrow_forward</span></a>
+      </div>
+      <div class="story-grid" id="relatedGrid"><!-- JS fills --></div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <div class="brand"><span class="brand-mark">TC</span><span class="brand-name light">The Clarion</span></div>
+        <p>When the public pays, the public is served. Independent media empowers democracy with fearless, verified reporting.</p>
+        <div class="footer-cta">
+          <a href="index.html#subscribe" class="btn btn-solid">Become a Subscriber</a>
+          <a href="#" class="btn btn-outline">Support a Project</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Desks &amp; Formats</h4>
+        <ul>
+          <li><a href="category.html">Investigative Series</a></li>
+          <li><a href="category.html">Ground Reports</a></li>
+          <li><a href="category.html">Podcasts</a></li>
+          <li><a href="category.html">Video</a></li>
+          <li><a href="category.html">Community Projects</a></li>
+          <li><a href="category.html">Subscriber Exclusives</a></li>
+        </ul>
+      </div>
+      <div class="footer-col newsletter">
+        <h4>The Dispatch Newsletter</h4>
+        <p>Uncensored, ad-free journalism in your inbox every morning.</p>
+        <form class="news-form" id="newsForm">
+          <input type="email" placeholder="Enter your email" required aria-label="Email" />
+          <button type="submit" class="btn btn-solid">Subscribe</button>
+        </form>
+        <p class="news-msg" id="newsMsg" role="status"></p>
+      </div>
+    </div>
+    <div class="wrap footer-base">
+      <span>© <span id="year"></span> The Clarion Media. All rights reserved. Completely ad-free.</span>
+      <div class="footer-legal">
+        <a href="#">Ownership</a><span>•</span><a href="#">Grievances</a><span>•</span><a href="#">Ethics</a><span>•</span><a href="#">Privacy</a><span>•</span><a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top"><span class="material-symbols-outlined">arrow_upward</span></button>
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Investigations — The Clarion</title>
+  <meta name="description" content="Long-form, document-driven investigations from The Clarion newsroom. Funded by readers, accountable to no advertiser." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="utility-bar">
+      <div class="wrap utility-inner">
+        <div class="utility-left">
+          <span class="util-date" id="todayDate">Loading…</span>
+          <span class="divider" aria-hidden="true"></span>
+          <div class="trending">
+            <span class="trending-label">Trending</span>
+            <a href="#">#FightToBreathe</a>
+            <span class="dot">•</span>
+            <a href="#">Podcasts</a>
+            <span class="dot">•</span>
+            <a href="#">Elections</a>
+          </div>
+        </div>
+        <div class="utility-right">
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <button class="active" data-lang="EN">EN</button>
+            <button data-lang="HI">HI</button>
+          </div>
+          <button class="icon-btn" id="searchToggle" aria-label="Search"><span class="material-symbols-outlined">search</span></button>
+          <button class="icon-btn theme-btn" id="themeToggle" aria-label="Toggle dark mode"><span class="material-symbols-outlined">dark_mode</span></button>
+          <a href="index.html#support" class="btn btn-ghost">Support Us</a>
+          <a href="index.html#subscribe" class="btn btn-solid">Subscribe</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap masthead">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">TC</span>
+        <span class="brand-text">
+          <span class="brand-name">The Clarion</span>
+          <span class="brand-tag">Pay to keep news free</span>
+        </span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="category.html" class="active">Investigations</a>
+        <a href="category.html">Ground Report</a>
+        <a href="category.html">Subscriber Only</a>
+        <a href="category.html">Podcasts</a>
+        <a href="category.html">Video</a>
+        <a href="category.html">Opinion</a>
+      </nav>
+      <button class="icon-btn menu-btn" id="menuToggle" aria-label="Menu" aria-expanded="false"><span class="material-symbols-outlined">menu</span></button>
+    </div>
+    <div class="search-drawer" id="searchDrawer" hidden>
+      <div class="wrap">
+        <form class="search-form" onsubmit="return false;">
+          <span class="material-symbols-outlined">search</span>
+          <input type="search" placeholder="Search investigations, reporters, topics…" aria-label="Search" />
+          <button type="submit" class="btn btn-solid">Go</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">›</span>
+      <span class="current">Investigations</span>
+    </nav>
+
+    <!-- Category hero -->
+    <section class="cat-hero">
+      <span class="cat-hero-eyebrow"><span class="sq"></span> The Desk</span>
+      <h1>Investigations</h1>
+      <p>Long-form, document-driven reporting that follows the money and the paperwork. Every investigation on this desk is funded by readers and accountable to no advertiser.</p>
+      <div class="cat-hero-foot">
+        <span class="cat-stat"><b>128</b> stories</span>
+        <span class="cat-stat"><b>9</b> reporters</span>
+        <button class="btn btn-solid"><span class="material-symbols-outlined">notifications</span> Follow this desk</button>
+      </div>
+    </section>
+
+    <div class="cat-layout">
+      <!-- Main column -->
+      <div>
+        <div class="filter-bar">
+          <div class="filter-tabs" id="filterTabs" role="tablist">
+            <button class="active" data-filter="all">All</button>
+            <button data-filter="Public Purse">Public Purse</button>
+            <button data-filter="Environment">Environment</button>
+            <button data-filter="Press Freedom">Press Freedom</button>
+            <button data-filter="Legal">Legal</button>
+          </div>
+          <label class="sort-select">Sort
+            <select id="sortSelect">
+              <option value="new">Newest</option>
+              <option value="old">Oldest</option>
+              <option value="read">Most read</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="cat-grid" id="catGrid"><!-- JS fills --></div>
+        <button class="btn btn-ghost load-more" id="loadMore">Load more stories</button>
+      </div>
+
+      <!-- Sidebar -->
+      <aside>
+        <div class="sidebar-block">
+          <h3>Most Read</h3>
+          <nav class="mostread" id="mostRead"><!-- JS fills --></nav>
+        </div>
+        <div class="sidebar-block sidebar-news">
+          <h3>The Dispatch</h3>
+          <p>Our best investigations, in your inbox every morning. Free.</p>
+          <form class="news-form" id="newsForm">
+            <input type="email" placeholder="Your email" required aria-label="Email" />
+            <button type="submit" class="btn btn-solid">Join</button>
+          </form>
+          <p class="news-msg" id="newsMsg" role="status"></p>
+        </div>
+        <div class="sidebar-block">
+          <h3>Popular Tags</h3>
+          <div class="tagcloud">
+            <a class="tag" href="#">#Tenders</a>
+            <a class="tag" href="#">#AirQuality</a>
+            <a class="tag" href="#">#Courts</a>
+            <a class="tag" href="#">#Elections</a>
+            <a class="tag" href="#">#Climate</a>
+            <a class="tag" href="#">#Policing</a>
+            <a class="tag" href="#">#Budgets</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <div class="brand"><span class="brand-mark">TC</span><span class="brand-name light">The Clarion</span></div>
+        <p>When the public pays, the public is served. Independent media empowers democracy with fearless, verified reporting.</p>
+        <div class="footer-cta">
+          <a href="index.html#subscribe" class="btn btn-solid">Become a Subscriber</a>
+          <a href="#" class="btn btn-outline">Support a Project</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Desks &amp; Formats</h4>
+        <ul>
+          <li><a href="category.html">Investigative Series</a></li>
+          <li><a href="category.html">Ground Reports</a></li>
+          <li><a href="category.html">Podcasts</a></li>
+          <li><a href="category.html">Video</a></li>
+          <li><a href="category.html">Community Projects</a></li>
+          <li><a href="category.html">Subscriber Exclusives</a></li>
+        </ul>
+      </div>
+      <div class="footer-col newsletter">
+        <h4>The Dispatch Newsletter</h4>
+        <p>Uncensored, ad-free journalism in your inbox every morning.</p>
+        <form class="news-form" id="newsFormB">
+          <input type="email" placeholder="Enter your email" required aria-label="Email" />
+          <button type="submit" class="btn btn-solid">Subscribe</button>
+        </form>
+        <p class="news-msg" id="newsMsgB" role="status"></p>
+      </div>
+    </div>
+    <div class="wrap footer-base">
+      <span>© <span id="year"></span> The Clarion Media. All rights reserved. Completely ad-free.</span>
+      <div class="footer-legal">
+        <a href="#">Ownership</a><span>•</span><a href="#">Grievances</a><span>•</span><a href="#">Ethics</a><span>•</span><a href="#">Privacy</a><span>•</span><a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top"><span class="material-symbols-outlined">arrow_upward</span></button>
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -61,6 +61,22 @@
     "AQI crosses 400 in the capital; schools shift to hybrid classes.",
   ];
 
+  // Category page feed. `cat` matches the filter tabs; `order` ~ recency; `reads` ~ popularity.
+  const catArticles = [
+    { featured: true, cat: "Public Purse", tag: "Public Purse", title: "The price of the giant flags: a bigger bill with each new tender", dek: "Five hundred monumental flags were estimated at ₹200 crore. Three consecutive tenders show why long-term estimates soared even as unit costs were claimed to fall.", author: "Samarth Grover", time: "Oct 26", order: 100, reads: 980, img: "linear-gradient(135deg,#8a2d0e,#c9641f 55%,#e9b27a)" },
+    { cat: "Environment", tag: "Environment", title: "The land that gives us light, and the people poisoned with mercury", dek: "Behind the grid that lights the metros lies a silent neurological crisis in a tribal belt.", author: "Hridayesh Joshi", time: "Oct 24", order: 95, reads: 1240, img: "linear-gradient(135deg,#2b3a2a,#5a7a4a)" },
+    { cat: "Press Freedom", tag: "Press Freedom", title: "Journalists critical of the CM 'were targeted' until they backed off", dek: "A pattern of complaints, notices and quiet pressure, reconstructed from a dozen accounts.", author: "Ayush Tiwari", time: "Oct 22", order: 90, reads: 870, img: "linear-gradient(135deg,#2c2c3a,#54546b)" },
+    { cat: "Legal", tag: "Legal Report", title: "Anti-protest affidavit: journalists dispute the police account in court", dek: "Video metadata submitted by independent media contradicts the official timeline.", author: "Khushi Mehrotra", time: "Oct 21", order: 85, reads: 640, img: "linear-gradient(135deg,#2a3344,#53647e)" },
+    { cat: "Public Purse", tag: "Public Purse", title: "A tunnel project mired in cost audits and a 'lasting legacy'", dek: "What began as a flagship scheme is now a case study in revised estimates.", author: "Sowmya Aji", time: "Oct 19", order: 80, reads: 1520, img: "linear-gradient(135deg,#30241a,#6b513a)" },
+    { cat: "Environment", tag: "Environment", title: "As a firm sells green credits, a grassland community is left behind", dek: "The carbon math works on paper. On the ground, the ledger looks different.", author: "Ayush Tiwari", time: "Oct 17", order: 75, reads: 710, img: "linear-gradient(135deg,#243a30,#4a7a60)" },
+    { cat: "Legal", tag: "Legal Report", title: "A sting that exposed no crime: 'Operation Regime Change' dismantled", dek: "We traced the claims frame by frame. The footage does not say what the headline did.", author: "Media Watch", time: "Oct 15", order: 70, reads: 1980, img: "linear-gradient(135deg,#3a2020,#7a4040)" },
+    { cat: "Press Freedom", tag: "Press Freedom", title: "Impostor posing as cyber cell sought takedown of rights accounts", dek: "A forged notice, a frozen handle, and a trail that led nowhere official.", author: "Prateek Goyal", time: "Oct 12", order: 65, reads: 560, img: "linear-gradient(135deg,#2c2c3a,#4a4a62)" },
+    { cat: "Public Purse", tag: "Public Purse", title: "Pink booths, locked doors: a reality check across 18 stations", dek: "Facilities announced with fanfare were shut when we visited at the hours they were meant to serve.", author: "Akankhya Rout", time: "Oct 10", order: 60, reads: 1130, img: "linear-gradient(135deg,#3a2433,#6b4a5e)" },
+    { cat: "Environment", tag: "Environment", title: "A 'clean river' PR stunt exposed: fake ghats, photo-ops and foam", dek: "The ceremony looked immaculate. The water, a few metres upstream, did not.", author: "Basant Kumar", time: "Oct 08", order: 55, reads: 1440, img: "linear-gradient(135deg,#1f3a3a,#3e7474)" },
+  ];
+
+  const mostReadItems = catArticles.slice().sort((a, b) => b.reads - a.reads).slice(0, 5);
+
   /* ---------- Helpers ---------- */
   const $ = (sel, root = document) => root.querySelector(sel);
   const el = (tag, cls, html) => {
@@ -77,7 +93,7 @@
     if (!root) return;
     railItems.forEach((it) => {
       const card = el("a", "rail-card reveal");
-      card.href = "#";
+      card.href = "article.html";
       card.innerHTML = `
         <span class="rail-thumb" style="--img:${it.img}"></span>
         <span class="rail-info">
@@ -89,18 +105,17 @@
     });
   }
 
-  /* ---------- Render: story grid ---------- */
-  function renderStories() {
-    const root = $("#storyGrid");
+  /* ---------- Render: story cards (home grid + article related) ---------- */
+  function renderStoryCards(root, items) {
     if (!root) return;
-    stories.forEach((s) => {
+    items.forEach((s) => {
       const a = el("article", "story reveal");
       a.innerHTML = `
-        <a href="#" class="story-media" style="--img:${s.img}">
+        <a href="article.html" class="story-media" style="--img:${s.img}">
           <span class="story-tag ${s.tagClass}">${esc(s.tag)}</span>
         </a>
         <div class="story-body">
-          <h3 class="story-title"><a href="#">${esc(s.title)}</a></h3>
+          <h3 class="story-title"><a href="article.html">${esc(s.title)}</a></h3>
           <p class="story-dek">${esc(s.dek)}</p>
           <div class="story-foot">
             <span class="author">${esc(s.author)}</span>
@@ -110,6 +125,10 @@
       root.appendChild(a);
     });
   }
+  function renderStories() {
+    renderStoryCards($("#storyGrid"), stories);
+    renderStoryCards($("#relatedGrid"), stories);
+  }
 
   /* ---------- Render: three columns ---------- */
   function renderColumns() {
@@ -118,7 +137,7 @@
     columns.forEach((c) => {
       const col = el("div", "column reveal");
       const listHtml = c.list.map((li) => `
-        <a href="#">
+        <a href="article.html">
           <span class="col-list-title">${esc(li.t)}</span>
           <span class="col-list-meta">${esc(li.m)}</span>
         </a>`).join("");
@@ -131,7 +150,7 @@
           </div>
           <span class="col-pill">${esc(c.pill)}</span>
         </div>
-        <a href="#" class="col-feature">
+        <a href="article.html" class="col-feature">
           <span class="col-feature-media" style="--img:${c.feature.img}">
             <span class="col-feature-tag ${c.feature.tagClass}">${featIcon}${esc(c.feature.tag)}</span>
           </span>
@@ -231,24 +250,144 @@
     span.style.transition = "opacity .3s";
   }
 
-  /* ---------- Newsletter form ---------- */
+  /* ---------- Newsletter forms (any .news-form) ---------- */
   function initNewsletter() {
-    const form = $("#newsForm");
-    const msg = $("#newsMsg");
-    if (!form) return;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const input = form.querySelector("input");
-      const val = (input.value || "").trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-        msg.style.color = "#ff8a80";
-        msg.textContent = "Please enter a valid email address.";
-        return;
-      }
-      msg.style.color = "#7dd87d";
-      msg.textContent = "You're subscribed to The Dispatch. Thank you!";
-      form.reset();
+    document.querySelectorAll(".news-form").forEach((form) => {
+      const msg = form.parentElement.querySelector(".news-msg");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const input = form.querySelector("input");
+        const val = (input.value || "").trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+          if (msg) { msg.style.color = "#ff8a80"; msg.textContent = "Please enter a valid email address."; }
+          return;
+        }
+        if (msg) { msg.style.color = "#7dd87d"; msg.textContent = "You're subscribed to The Dispatch. Thank you!"; }
+        form.reset();
+      });
     });
+  }
+
+  /* ---------- Article: reading progress bar ---------- */
+  function initReadingProgress() {
+    const bar = $("#readingProgress");
+    const article = $(".article");
+    if (!bar || !article) return;
+    const update = () => {
+      const start = article.offsetTop;
+      const total = article.offsetHeight - window.innerHeight;
+      const seen = window.scrollY - start;
+      const pct = Math.max(0, Math.min(1, seen / Math.max(1, total)));
+      bar.style.width = (pct * 100).toFixed(1) + "%";
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+
+  /* ---------- Article: share + copy link ---------- */
+  function initShare() {
+    const url = window.location.href;
+    const title = document.title;
+    const intents = {
+      x: "https://twitter.com/intent/tweet?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(title),
+      fb: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url),
+      wa: "https://wa.me/?text=" + encodeURIComponent(title + " " + url),
+    };
+    document.querySelectorAll("[data-share]").forEach((a) => {
+      const k = a.getAttribute("data-share");
+      if (intents[k]) { a.href = intents[k]; a.target = "_blank"; a.rel = "noopener"; }
+    });
+    const copy = $("#copyLink");
+    if (copy) {
+      copy.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(url);
+        } catch (e) {
+          const t = document.createElement("textarea");
+          t.value = url; document.body.appendChild(t); t.select();
+          try { document.execCommand("copy"); } catch (_) {}
+          document.body.removeChild(t);
+        }
+        copy.classList.add("copied");
+        copy.querySelector(".material-symbols-outlined").textContent = "check";
+        setTimeout(() => {
+          copy.classList.remove("copied");
+          copy.querySelector(".material-symbols-outlined").textContent = "link";
+        }, 1500);
+      });
+    }
+  }
+
+  /* ---------- Category: grid + filter + sort + load more ---------- */
+  function initCategory() {
+    const grid = $("#catGrid");
+    if (!grid) return;
+    const PAGE = 6;
+    let filter = "all";
+    let sort = "new";
+    let shown = PAGE;
+
+    const cardHtml = (a) => {
+      const cls = a.featured ? "cat-card cat-featured reveal" : "cat-card reveal";
+      return `<article class="${cls}">
+        <a href="article.html" class="cat-card-media" style="--img:${a.img}">
+          <span class="cat-card-tag">${esc(a.tag)}</span>
+        </a>
+        <div class="cat-card-body">
+          <h3 class="cat-card-title"><a href="article.html">${esc(a.title)}</a></h3>
+          <p class="cat-card-dek">${esc(a.dek)}</p>
+          <div class="cat-card-foot"><span class="author">${esc(a.author)}</span><span>${esc(a.time)}</span></div>
+        </div>
+      </article>`;
+    };
+
+    const apply = () => {
+      let list = catArticles.filter((a) => filter === "all" || a.cat === filter);
+      if (sort === "new") list.sort((a, b) => b.order - a.order);
+      else if (sort === "old") list.sort((a, b) => a.order - b.order);
+      else if (sort === "read") list.sort((a, b) => b.reads - a.reads);
+
+      const page = list.slice(0, shown);
+      grid.innerHTML = page.length
+        ? page.map(cardHtml).join("")
+        : `<p style="color:var(--text-mute);padding:2rem 0">No stories in this filter yet.</p>`;
+
+      // re-trigger reveal for freshly injected cards
+      grid.querySelectorAll(".reveal").forEach((n) => n.classList.add("in"));
+      const more = $("#loadMore");
+      if (more) more.hidden = shown >= list.length;
+    };
+
+    const tabs = $("#filterTabs");
+    if (tabs) {
+      tabs.addEventListener("click", (e) => {
+        const btn = e.target.closest("button");
+        if (!btn) return;
+        tabs.querySelectorAll("button").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        filter = btn.getAttribute("data-filter");
+        shown = PAGE;
+        apply();
+      });
+    }
+    const sortSel = $("#sortSelect");
+    if (sortSel) sortSel.addEventListener("change", () => { sort = sortSel.value; shown = PAGE; apply(); });
+    const more = $("#loadMore");
+    if (more) more.addEventListener("click", () => { shown += PAGE; apply(); });
+
+    apply();
+  }
+
+  /* ---------- Category: most read sidebar ---------- */
+  function renderMostRead() {
+    const root = $("#mostRead");
+    if (!root) return;
+    root.innerHTML = mostReadItems.map((a, i) => `
+      <a href="article.html">
+        <span class="rank">${i + 1}</span>
+        <span class="mr-title">${esc(a.title)}</span>
+      </a>`).join("");
   }
 
   /* ---------- Scroll reveal + back-to-top + sticky shadow ---------- */
@@ -290,12 +429,16 @@
     renderRail();
     renderStories();
     renderColumns();
+    renderMostRead();
+    initCategory();
     setDate();
     initTheme();
     initMenu();
     initSearch();
     initTicker();
     initNewsletter();
+    initReadingProgress();
+    initShare();
     initScroll();
   });
 })();
